@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.EntityFrameworkCore;
 using TaxHistoryApi.models;
 
@@ -37,7 +38,7 @@ namespace TaxHistoryApi
 
             app.UseRouting();
 
-            app.UseCors(builder => builder.WithOrigins("*"));
+            app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             app.UseAuthorization();
 
