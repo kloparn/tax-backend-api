@@ -22,6 +22,7 @@ namespace TaxHistoryApi
         {
             services.AddDbContext<HistoryContext>(opt => opt.UseInMemoryDatabase("HistoryList"));
             services.AddControllers();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +36,8 @@ namespace TaxHistoryApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(builder => builder.WithOrigins("*"));
 
             app.UseAuthorization();
 
